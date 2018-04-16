@@ -1,5 +1,9 @@
 tap 'homebrew/bundle'
-
+tap 'caskroom/cask'
+tap 'caskroom/fonts'
+tap 'homebrew/dupes'
+tap 'homebrew/php'
+tap 'homebrew/services'
 tap 'b4b4r07/goal'
 brew 'goal'
 
@@ -43,4 +47,19 @@ brew 'wget'
 brew 'zsh', args: ['disable-etcdir']
 brew 'zsh-completions'
 brew 'zsh-syntax-highlighting'
+
+cask_args appdir: '/Applications'
+
+# Applications
+cask 'intellij-idea'
+cask 'iterm2'
+cask 'atom'
+cask 'sourcetree'
+cask 'firefox'
+cask 'gas-mask'
+cask 'spectacle'
+cask 'macdown'
+cask 'sequel-pro'
+cask 'dbeaver-community'
+
 
