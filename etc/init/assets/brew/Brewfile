@@ -42,7 +42,6 @@ brew 'sqlite'
 brew 'terminal-notifier'
 brew 'tig'
 brew 'tree'
-brew 'vim', args: ['with-lua', 'with-luajit']
 brew 'wget'
 brew 'zsh', args: ['disable-etcdir']
 brew 'zsh-completions'
