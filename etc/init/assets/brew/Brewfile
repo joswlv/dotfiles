@@ -55,11 +55,9 @@ cask 'intellij-idea'
 cask 'iterm2'
 cask 'atom'
 cask 'sourcetree'
-cask 'firefox'
 cask 'gas-mask'
 cask 'spectacle'
 cask 'macdown'
 cask 'sequel-pro'
-cask 'dbeaver-community'
 
 
