@@ -1,8 +1,6 @@
 tap 'homebrew/bundle'
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
-tap 'homebrew/dupes'
-tap 'homebrew/php'
 tap 'homebrew/services'
 tap 'b4b4r07/goal'
 brew 'goal'
