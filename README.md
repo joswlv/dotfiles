@@ -42,6 +42,7 @@ vim +PlugInstall +qall
 10. winarchiver lite
 11. feedly
 12. sourcetree
+13. [karabiner](https://pqrs.org/osx/karabiner/) - for HHKB
 
 참고 링크 : http://blog.appkr.kr/work-n-play/dotfiles/
 
