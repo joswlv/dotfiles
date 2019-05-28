@@ -50,11 +50,12 @@ cask_args appdir: '/Applications'
 # Applications
 cask 'intellij-idea'
 cask 'iterm2'
-cask 'atom'
+cask 'visual-studio-code'
 cask 'sourcetree'
 cask 'gas-mask'
 cask 'spectacle'
 cask 'macdown'
 cask 'sequel-pro'
-
-
+cask 'karabiner-elements'
+cask 'android-file-transfer'
+cask 'slack'
