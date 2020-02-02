@@ -95,3 +95,27 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if ls --version > /dev/null 2>&1; then
+    alias ls='ls --color=auto'; #gnu
+    alias l.='ls -d .* --color=auto'
+else
+    alias ls='ls -G'; #osx
+    alias l.='ls -dG .*'
+fi
+alias ll='ls -alh'
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias cd..='cd ..'
+alias eclimd='~/Applications/Eclipse_neon.app/Contents/Eclipse/eclimd'
+alias ctags='`brew --prefix`/bin/ctags'
+#alias vimr='open -a VimR.app "$@"'
+alias ag='ag --path-to-ignore ~/.agignore'
+alias agl='ag --pager="less -XFR"'
+alias ncd='ncdu --color dark -rr -x'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias bc='bc -l ~/.bcrc -q'
+alias weather='curl v2.wttr.in/Seoul'
