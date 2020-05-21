@@ -103,6 +103,15 @@ else
     alias ls='ls -G'; #osx
     alias l.='ls -dG .*'
 fi
+
+## pyenv설정
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+if command -v pyenv 1>/dev/null 2&1; then
+    eval "$(pyenv init -)"
+fi
+
 alias ll='ls -alh'
 alias rm='rm -i'
 alias mv='mv -i'
@@ -119,3 +128,4 @@ alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias bc='bc -l ~/.bcrc -q'
 alias weather='curl v2.wttr.in/Seoul'
+alias python='python3'
