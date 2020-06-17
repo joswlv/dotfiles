@@ -113,6 +113,8 @@ if command -v pyenv 1>/dev/null 2&1; then
 fi
 
 alias ll='ls -alh'
+alias cat='bat'
+alias le='exa --long --tree --level=3 --all'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
