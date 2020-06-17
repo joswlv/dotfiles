@@ -44,6 +44,9 @@ brew 'wget'
 brew 'zsh', args: ['disable-etcdir']
 brew 'zsh-completions'
 brew 'zsh-syntax-highlighting'
+brew 'exa'
+brew 'bat'
+brew 'procs'
 
 cask_args appdir: '/Applications'
 
