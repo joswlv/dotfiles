@@ -33,16 +33,14 @@ $ cat ~/.ssh/id_rsa.pub C : "cat ~/.ssh/id_rsa.pub | pbcopy"와 동일한 명령
 vim +PlugInstall +qall
 ```
 ### 4. 추가 설치 app
-1. sequel pro
-2. DBeaver enterprise 4.0.4
-3. MacDown
-4. Atom
-6. GasMask
-7. spectacle
-10. winarchiver lite
-11. feedly
-12. sourcetree
-13. [karabiner](https://pqrs.org/osx/karabiner/) - for HHKB
+- sequel pro
+- DBeaver enterprise 4.0.4
+- MacDown
+- GasMask
+- spectacle
+- winarchiver lite
+- feedly
+- [karabiner](https://pqrs.org/osx/karabiner/) - for HHKB
 
 참고 링크 : http://blog.appkr.kr/work-n-play/dotfiles/
 
