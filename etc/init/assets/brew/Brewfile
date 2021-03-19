@@ -62,4 +62,6 @@ cask 'karabiner-elements'
 cask 'android-file-transfer'
 cask 'slack'
 cask 'keka'
+cask 'docker'
+cask 'adoptopenjdk8'
 
