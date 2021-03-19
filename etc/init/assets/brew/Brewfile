@@ -62,3 +62,5 @@ cask 'sequel-pro'
 cask 'karabiner-elements'
 cask 'android-file-transfer'
 cask 'slack'
+cask 'keka'
+
