@@ -1,3 +1,4 @@
+//~/.config/karabiner.json
 {
     "global": {
         "check_for_updates_on_startup": true,
