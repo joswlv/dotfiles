@@ -47,6 +47,7 @@ brew 'zsh-syntax-highlighting'
 brew 'exa'
 brew 'bat'
 brew 'procs'
+brew 'gh'
 
 cask_args appdir: '/Applications'
 
