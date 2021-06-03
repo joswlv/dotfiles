@@ -3,43 +3,27 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin),
-"Plugin 'file:///home/jjeaby/Dev/tools/vim-plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-" All of your Plugins must be added before the following line
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'blueyed/vim-diminactive'
+Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'nanotech/jellybeans.vim'
 call vundle#end()            " required
 "filetype plugin indent on    " required
-"NERDTree ON 단축키를 "\nt"로 설정
-map <Leader>nt <ESC>:NERDTree<CR>
-let NERDTreeShowHidden=1
-" let NERDTreeQuitOnOpen=1
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|vendor$',
     \ 'file': '\v\.(exe|so|dll)$'
 \ }
+"NERDTree ON 단축키를 "\nt"로 설정
+map <Leader>nt <ESC>:NERDTree<CR>
+let NERDTreeShowHidden=1
 color jellybeans
 " Tag List 환경설정
 filetype on                                 "vim filetype on
@@ -49,6 +33,17 @@ nmap <C-H> <C-W>h                           "왼쪽 창으로 이동
 nmap <C-J> <C-W>j                           "아래 창으로 이동
 nmap <C-K> <C-W>k                           "윗 창으로 이동
 nmap <C-L> <C-W>l                           "오른쪽 창으로 이동
+
+" for blueyed/vim-diminactive
+let g:diminactive_enable_focus = 1
+
+" for indent guide
+let g:indentguides_spacechar = '┆'
+let g:indentguides_tabchar = '|'
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+
 " 세부 정보 출력
 set nu
 set title
@@ -68,6 +63,7 @@ set shiftwidth=4
 set softtabstop=4
 set smarttab
 set expandtab
+set hlsearch
 " 붙여넣기 설정
 set paste
 set mouse-=a
