@@ -48,6 +48,7 @@ brew 'exa'
 brew 'bat'
 brew 'procs'
 brew 'gh'
+brew "mas"
 
 cask_args appdir: '/Applications'
 
@@ -65,4 +66,5 @@ cask 'slack'
 cask 'keka'
 cask 'docker'
 cask 'adoptopenjdk8'
+mas "KakaoTalk", id: 869223134
 
