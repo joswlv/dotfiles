@@ -29,8 +29,10 @@ $ cat ~/.ssh/id_rsa.pub C : "cat ~/.ssh/id_rsa.pub | pbcopy"와 동일한 명령
 
 ### 3. Vim 설정 정보
 ```
-설정
-vim +PlugInstall +qall
+VundleVim설치
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+:PluginInstall
 ```
 ### 4. 추가 설치 app
 - sequel pro
