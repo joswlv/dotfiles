@@ -49,7 +49,7 @@ plugins=(git
 	 )
 
 # User configuration
-export PATH="/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/go/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/go/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/opt/python/libexec/bin:/opt/homebrew/bin:$PATH"
 
 export EDITOR="/usr/bin/vim"
 
