@@ -8,6 +8,9 @@ $ git clone https://github.com/joswlv/dotfiles.git ~/.dotfiles
 $ cd ~/.dotfiles && make install
 $ vim +NeoBundleInit +qall # Vim 플러그인 설치
 $ chsh -s /bin/zsh # zsh 설정
+$ git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+$ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
 
