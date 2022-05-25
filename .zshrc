@@ -41,7 +41,12 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(git 
+	 zsh-syntax-highlighting
+	 zsh-completions
+	 zsh-autosuggestions
+	 zsh-fzf-history-search
+	 )
 
 # User configuration
 export PATH="/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/go/bin:/usr/local/mysql/bin:/usr/local/mysql/bin:/usr/local/opt/python/libexec/bin:$PATH"
@@ -94,7 +99,6 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if ls --version > /dev/null 2>&1; then
     alias ls='ls --color=auto'; #gnu
