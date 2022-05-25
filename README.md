@@ -54,6 +54,30 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 (?i:.*FATAL.*)
 ```
 
+### 6. vscode extension
+```
+code --install-extension adpyke.vscode-sql-formatter
+code --install-extension CJamesMay.plush
+code --install-extension CoenraadS.bracket-pair-colorizer-2
+code --install-extension dvirtz.parquet-viewer
+code --install-extension GitHub.copilot
+code --install-extension golang.go
+code --install-extension golang.go-nightly
+code --install-extension GrapeCity.gc-excelviewer
+code --install-extension mhutchie.git-graph
+code --install-extension ms-azuretools.vscode-docker
+code --install-extension ms-python.python
+code --install-extension ms-python.vscode-pylance
+code --install-extension ms-toolsai.jupyter
+code --install-extension ms-toolsai.jupyter-keymap
+code --install-extension ms-toolsai.jupyter-renderers
+code --install-extension oboki.sql-styler
+code --install-extension premparihar.gotestexplorer
+code --install-extension quillaja.goasm
+code --install-extension scala-lang.scala
+code --install-extension windmilleng.vscode-go-autotest
+```
+
 참고 링크 : http://blog.appkr.kr/work-n-play/dotfiles/
 
 [mac_terminal]: http://i.imgur.com/sDxus3j.png
