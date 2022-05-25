@@ -44,6 +44,13 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 - feedly
 - [karabiner](https://pqrs.org/osx/karabiner/) - for HHKB
 
+### 5. iterm triggers설정
+```
+(?i:.*error|Error|ERROR.*) 
+(?i:.*(warning|warn).*)
+(?i:.*FATAL.*)
+```
+
 참고 링크 : http://blog.appkr.kr/work-n-play/dotfiles/
 
 [mac_terminal]: http://i.imgur.com/sDxus3j.png
