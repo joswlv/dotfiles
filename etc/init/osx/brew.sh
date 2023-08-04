@@ -11,7 +11,7 @@ if has "brew"; then
     exit
 fi
 
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 if has "brew"; then
     brew doctor
 else
