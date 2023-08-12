@@ -59,12 +59,11 @@ cask 'visual-studio-code'
 cask 'gas-mask'
 cask 'spectacle'
 cask 'macdown'
-cask 'sequel-pro'
+cask 'sequel-ace'
 cask 'karabiner-elements'
 cask 'android-file-transfer'
 cask 'slack'
 cask 'keka'
 cask 'docker'
-cask 'adoptopenjdk8'
 mas "KakaoTalk", id: 869223134
 
