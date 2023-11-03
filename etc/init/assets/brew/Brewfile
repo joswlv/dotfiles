@@ -49,6 +49,7 @@ brew 'bat'
 brew 'procs'
 brew 'gh'
 brew "mas"
+brew 'atuin'
 
 cask_args appdir: '/Applications'
 
