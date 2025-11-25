@@ -1,0 +1,41 @@
+# IntelliJ IDEA Plugins
+# 설치 방법: Settings > Plugins > Marketplace에서 검색하여 설치
+
+# Essential
+Scala
+Spring
+Go
+Python
+
+# Git & Version Control
+.ignore
+
+# Code Quality
+Rainbow Brackets
+EditorConfig
+
+# Data Engineering
+Big Data Tools (Flink, Kafka, Metastore 포함)
+Avro and Parquet Viewer
+
+# Productivity
+Maven Helper
+Maven Dependency Checker
+Translation
+JIRA Branch Creator
+
+# AI
+Claude Code
+MCP Server
+
+# Languages & Frameworks
+Thrift
+TOML
+Terraform
+Velocity
+Vue.js
+React
+
+# API & Web
+Swagger
+REST Client

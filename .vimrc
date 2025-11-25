@@ -1,61 +1,89 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'vim-airline/vim-airline'
-Plugin 'scrooloose/nerdtree'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/syntastic'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'blueyed/vim-diminactive'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'nanotech/jellybeans.vim'
-call vundle#end()            " required
-"filetype plugin indent on    " required
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|vendor$',
-    \ 'file': '\v\.(exe|so|dll)$'
-\ }
-"NERDTree ON 단축키를 "\nt"로 설정
-map <Leader>nt <ESC>:NERDTree<CR>
-let NERDTreeShowHidden=1
-color jellybeans
-" Tag List 환경설정
-filetype on                                 "vim filetype on
-"Source Explorer 환경설정
-nmap <F8> :SrcExplToggle<CR>                "F8 Key = SrcExpl Toggling
-nmap <C-H> <C-W>h                           "왼쪽 창으로 이동
-nmap <C-J> <C-W>j                           "아래 창으로 이동
-nmap <C-K> <C-W>k                           "윗 창으로 이동
-nmap <C-L> <C-W>l                           "오른쪽 창으로 이동
+" =============================================================================
+" Vim Configuration
+" =============================================================================
 
-" for blueyed/vim-diminactive
-let g:diminactive_enable_focus = 1
+set nocompatible
+filetype off
 
-" for indent guide
-let g:indentguides_spacechar = '┆'
-let g:indentguides_tabchar = '|'
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
-
-" 세부 정보 출력
-set nu
-set title
-set showmatch
-set ruler
-" 구문 강조 사용
-if has("syntax")
- syntax on
+" -----------------------------------------------------------------------------
+" Plugin Manager: vim-plug (auto-install)
+" -----------------------------------------------------------------------------
+" Auto-install vim-plug if not present
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-" 색깔 설정
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+call plug#begin('~/.vim/plugged')
+
+" Core plugins
+Plug 'tpope/vim-fugitive'           " Git integration
+Plug 'airblade/vim-gitgutter'       " Git diff in gutter
+Plug 'vim-airline/vim-airline'      " Status bar
+Plug 'vim-airline/vim-airline-themes'
+
+" File navigation
+Plug 'preservim/nerdtree'           " File tree
+Plug 'ctrlpvim/ctrlp.vim'           " Fuzzy finder
+
+" Editor enhancement
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'blueyed/vim-diminactive'      " Dim inactive windows
+
+" Syntax & Linting
+Plug 'dense-analysis/ale'           " Async linting (syntastic replacement)
+
+" Color schemes
+Plug 'nanotech/jellybeans.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+
+call plug#end()
+
+filetype plugin indent on
+
+" -----------------------------------------------------------------------------
+" General Settings
+" -----------------------------------------------------------------------------
+set nu                      " Line numbers
+set title                   " Window title
+set showmatch               " Matching brackets
+set ruler                   " Cursor position
+set cursorline              " Highlight current line
+set laststatus=2            " Always show status bar
+set mouse-=a                " Disable mouse
+
+" -----------------------------------------------------------------------------
+" Colors & Syntax
+" -----------------------------------------------------------------------------
+if has("syntax")
+  syntax on
+endif
 set t_Co=256
-" 들여쓰기 설정
+set background=dark
+
+" Use jellybeans if available, fallback to default
+try
+  colorscheme jellybeans
+catch
+  " colorscheme not found, use default
+endtry
+
+" -----------------------------------------------------------------------------
+" Encoding
+" -----------------------------------------------------------------------------
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+
+" -----------------------------------------------------------------------------
+" Indentation
+" -----------------------------------------------------------------------------
 set autoindent
 set smartindent
 set tabstop=4
@@ -63,30 +91,88 @@ set shiftwidth=4
 set softtabstop=4
 set smarttab
 set expandtab
-set hlsearch
-" 붙여넣기 설정
+
+" -----------------------------------------------------------------------------
+" Search
+" -----------------------------------------------------------------------------
+set hlsearch                " Highlight search
+set ignorecase              " Case insensitive
+set smartcase               " Smart case (case-sensitive if uppercase)
+set incsearch               " Incremental search
+
+" -----------------------------------------------------------------------------
+" Clipboard & Paste
+" -----------------------------------------------------------------------------
 set paste
-set mouse-=a
-" 한글 입력 설정
-set encoding=utf-8
-set termencoding=utf-8
-" 커서가 있는 줄을 강조함
-set cursorline
-" 상태바 표시를 항상한다
-set laststatus=2
-set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
-" 검색 설정
-set ignorecase
-" 마지막으로 수정된 곳에 커서를 위치함
+set clipboard=unnamed       " Use system clipboard
+
+" -----------------------------------------------------------------------------
+" Plugin Configurations
+" -----------------------------------------------------------------------------
+
+" NERDTree
+map <Leader>nt <ESC>:NERDTree<CR>
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.git$', '\.DS_Store$', '__pycache__', '\.pyc$']
+
+" CtrlP
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|node_modules\|vendor$',
+  \ 'file': '\v\.(exe|so|dll|pyc|class)$'
+\ }
+let g:ctrlp_show_hidden = 1
+
+" vim-diminactive
+let g:diminactive_enable_focus = 1
+
+" vim-indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indentguides_spacechar = '┆'
+let g:indentguides_tabchar = '|'
+
+" ALE (Linting)
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 0
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+
+" Airline
+let g:airline_powerline_fonts = 0
+let g:airline#extensions#tabline#enabled = 1
+
+" -----------------------------------------------------------------------------
+" Key Mappings
+" -----------------------------------------------------------------------------
+" Window navigation
+nmap <C-H> <C-W>h
+nmap <C-J> <C-W>j
+nmap <C-K> <C-W>k
+nmap <C-L> <C-W>l
+
+" Quick save
+nmap <Leader>w :w<CR>
+
+" Clear search highlight
+nmap <Leader><Space> :nohlsearch<CR>
+
+" -----------------------------------------------------------------------------
+" Auto Commands
+" -----------------------------------------------------------------------------
+" Return to last edit position
 au BufReadPost *
 \ if line("'\"") > 0 && line("'\"") <= line("$") |
 \ exe "norm g`\"" |
 \ endif
 
-" Markdown 문법 설정 (Git 에서 사용)
+" Markdown settings
 augroup markdown
-    " remove previous autocmds
     autocmd!
-    " set every new or read *.md buffer to use the markdown filetype
     autocmd BufRead,BufNew *.md setf markdown
+    autocmd FileType markdown setlocal wrap linebreak
 augroup END
+
+" Remove trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e

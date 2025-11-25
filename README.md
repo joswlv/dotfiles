@@ -1,84 +1,149 @@
-dotfiles로 iTerm2 + zsh + vim + Git 설치/설정 자동화하기
----------------
-zsh와 tmux, vim 설치 및 설정을 자동화해서 편하게 맥에서 환경을 구축할 수 있게 해준다. 그리고 수정, 개선사항은 github의 [dotfiles][git_dotfiles] 리파지토리에 관리하면 로컬 맥에서 .dotfiles에서 `make update` 명령어만 날리면 로컬 환경에 자동 반영된다.
+# dotfiles
 
-brew 추가할 내용은 `dotfiles/etc/init/assets/brew/Brewfile`에 하면 된다.
-```
-$ git clone https://github.com/joswlv/dotfiles.git ~/.dotfiles
-$ cd ~/.dotfiles && make install
-$ vim +NeoBundleInit +qall # Vim 플러그인 설치
-$ chsh -s /bin/zsh # zsh 설정
-$ git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
-$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-$ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-```
+macOS 개발 환경 자동화 dotfiles
 
+## Quick Start (새 Mac 설정)
 
-### 1. 커맨드 관련 편리한 기능들
-```
-$ cd - Enter : 과거 커맨드 중복 제거된 히스토리 보여줌
-$ cd Enter   : 현재창에서 과거에 입력한 커맨드 보여줌.
+```bash
+# 1. Clone & Install (한 줄로 완료)
+git clone https://github.com/joswlv/dotfiles.git ~/dotfiles && cd ~/dotfiles && ./install.sh
+
+# 또는 curl로 직접 실행
+curl -fsSL https://raw.githubusercontent.com/joswlv/dotfiles/master/install.sh | bash
 ```
 
-### 2. zshrc 설정 정보
-```
-$ .. : "cd .."와 동일. 이전 데릭토리로 갈 리스트 보여줌.
-$ cd - Enter : 과거 커맨드 중복 제거된 히스토리 보여줌
-$ cd Enter : 과거에 입력한 커맨드 보여줌.
+설치 스크립트가 자동으로 처리하는 것들:
+- Xcode CLI Tools
+- Homebrew + 모든 패키지 (Brewfile)
+- Oh My Zsh + 플러그인
+- Vim + vim-plug + 플러그인
+- SDKMAN
+- FZF
+- symlink 생성
+- macOS 기본 설정 (선택)
 
-# alias -g C='| pbcopy'
-$ cat ~/.ssh/id_rsa.pub C : "cat ~/.ssh/id_rsa.pub | pbcopy"와 동일한 명령어로 id_rsa.pub의 내용을 클립보드에 복사.
-```
+## 설치 후 필수 작업
 
-### 3. Vim 설정 정보
-```
-VundleVim설치
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```bash
+# 1. 로컬 설정 파일 편집 (API 키, 시크릿 등)
+vim ~/.zshrc.local
 
-:PluginInstall
-```
-### 4. 추가 설치 app
-- sequel pro
-- DBeaver enterprise 4.0.4
-- MacDown
-- GasMask
-- spectacle
-- winarchiver lite
-- feedly
-- [karabiner](https://pqrs.org/osx/karabiner/) - for HHKB
+# 2. SDKMAN으로 Java 설치
+sdk install java 17.0.9-tem
 
-### 5. iterm triggers설정
-```
-(?i:.*error|Error|ERROR.*) 
-(?i:.*(warning|warn).*)
-(?i:.*FATAL.*)
+# 3. 터미널 재시작 또는
+source ~/.zshrc
 ```
 
-### 6. vscode extension
-```
-code --install-extension adpyke.vscode-sql-formatter
-code --install-extension CJamesMay.plush
-code --install-extension CoenraadS.bracket-pair-colorizer-2
-code --install-extension dvirtz.parquet-viewer
-code --install-extension GitHub.copilot
-code --install-extension golang.go
-code --install-extension golang.go-nightly
-code --install-extension GrapeCity.gc-excelviewer
-code --install-extension mhutchie.git-graph
-code --install-extension ms-azuretools.vscode-docker
-code --install-extension ms-python.python
-code --install-extension ms-python.vscode-pylance
-code --install-extension ms-toolsai.jupyter
-code --install-extension ms-toolsai.jupyter-keymap
-code --install-extension ms-toolsai.jupyter-renderers
-code --install-extension oboki.sql-styler
-code --install-extension premparihar.gotestexplorer
-code --install-extension quillaja.goasm
-code --install-extension scala-lang.scala
-code --install-extension windmilleng.vscode-go-autotest
+## 명령어
+
+```bash
+make help       # 도움말
+make deploy     # symlink 생성
+make update     # git pull + 재배포
+make sync       # 현재 brew 패키지를 Brewfile에 동기화
+make brew       # Brewfile 패키지 설치
+make vim        # Vim 플러그인 설치/업데이트
+make test       # 설치 상태 확인
+make backup     # 기존 설정 백업
+make clean      # symlink 제거
 ```
 
-참고 링크 : http://blog.appkr.kr/work-n-play/dotfiles/
+## 구조
 
-[mac_terminal]: http://i.imgur.com/sDxus3j.png
-[git_dotfiles]: https://github.com/mimul/dotfiles
+```
+~/dotfiles/
+├── .zshrc                 # ZSH 설정 (공개)
+├── .zshrc.local.example   # 로컬 설정 템플릿 (시크릿용)
+├── .vimrc                 # Vim 설정 (vim-plug)
+├── .gitconfig             # Git 설정 + aliases
+├── .gitignore             # Global gitignore
+├── Brewfile               # Homebrew 패키지 목록
+├── Makefile               # 관리 명령어
+├── install.sh             # 자동 설치 스크립트
+├── bin/                   # 커스텀 스크립트
+└── intellij/              # IntelliJ 설정 (키맵, 플러그인 목록)
+```
+
+## 주요 설정
+
+### ZSH
+- Oh My Zsh + robbyrussell 테마
+- 플러그인: git, zsh-fzf-history-search
+- Homebrew 플러그인: syntax-highlighting, autosuggestions, history-substring-search
+- arm64/x86 자동 감지
+
+### Vim
+- vim-plug (플러그인 자동 설치)
+- NERDTree, CtrlP, ALE, vim-fugitive
+- jellybeans/dracula 테마
+
+### Git Aliases
+```bash
+git l          # 로그 그래프
+git bb         # 브랜치 선택 (fzf)
+git a          # 파일 선택 후 add (fzf)
+git stash-pop  # stash 선택 후 pop (fzf)
+```
+
+### IntelliJ IDEA
+
+**권장: JetBrains Settings Sync 사용**
+1. `Settings` > `Settings Sync` > `Enable Settings Sync`
+2. JetBrains 계정으로 로그인하면 자동 동기화
+
+**수동 설정 (키맵 복사):**
+```bash
+cp ~/dotfiles/intellij/*.xml \
+   ~/Library/Application\ Support/JetBrains/IntelliJIdea2025.2/keymaps/
+```
+
+플러그인 목록: `intellij/plugins.txt` 참고
+
+## 시크릿 관리
+
+**절대 `.zshrc`에 API 키를 넣지 마세요!**
+
+`~/.zshrc.local`에 저장 (git에서 제외됨):
+
+```bash
+# ~/.zshrc.local
+export OPENAI_API_KEY="sk-..."
+export AWS_CA_BUNDLE="/path/to/ca-bundle.pem"
+```
+
+## 패키지 동기화
+
+```bash
+# 현재 설치된 brew 패키지를 Brewfile에 저장
+make sync
+
+# 변경사항 확인 후 커밋
+cd ~/dotfiles && git diff
+git add Brewfile && git commit -m "Update Brewfile"
+```
+
+## 문제 해결
+
+### Vim 플러그인 문제
+```bash
+# 플러그인 재설치
+make vim
+
+# 또는 vim 내에서
+:PlugInstall
+:PlugUpdate
+:PlugClean
+```
+
+### ZSH 플러그인 문제
+```bash
+# fzf-history-search 재설치
+git clone https://github.com/joshskidmore/zsh-fzf-history-search.git \
+  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-fzf-history-search
+```
+
+### symlink 확인
+```bash
+make test
+```

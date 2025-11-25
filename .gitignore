@@ -85,3 +85,16 @@ Icon
 # Grunt
 node_modules/
 dist/
+
+### Dotfiles Specific ###
+# Local configuration (contains secrets)
+.zshrc.local
+
+# Backup directories
+.dotfiles_backup_*
+
+# Editor swap files
+*.swp
+*.swo
+*~
+.netrwhist

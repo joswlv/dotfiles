@@ -1,0 +1,47 @@
+# =============================================================================
+# Local ZSH Configuration - Machine-specific & Secrets
+# =============================================================================
+# Copy this file to ~/.zshrc.local and fill in your values
+# This file should NEVER be committed to git
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# API Keys & Secrets
+# -----------------------------------------------------------------------------
+# export OPENAI_API_KEY="sk-your-key-here"
+# export ANTHROPIC_API_KEY="your-key-here"
+# export GOOGLE_CLOUD_PROJECT="your-project-id"
+
+# -----------------------------------------------------------------------------
+# SSL/TLS Certificates (Corporate environments)
+# -----------------------------------------------------------------------------
+# export NODE_EXTRA_CA_CERTS="/path/to/ca-bundle.pem"
+# export REQUESTS_CA_BUNDLE="/path/to/ca-bundle.pem"
+# export SSL_CERT_FILE="/path/to/ca-bundle.pem"
+# export AWS_CA_BUNDLE="/path/to/ca-bundle.pem"
+
+# -----------------------------------------------------------------------------
+# Machine-specific Paths
+# -----------------------------------------------------------------------------
+# export JAVA_HOME="$(/usr/libexec/java_home -v 17)"
+# export FLUTTER_HOME="${HOME}/flutter"
+# export PATH="${FLUTTER_HOME}/bin:$PATH"
+
+# -----------------------------------------------------------------------------
+# Work-specific Aliases
+# -----------------------------------------------------------------------------
+# alias vpn='networksetup -connectpppoeservice "Work VPN"'
+# alias assume=". assume"
+
+# -----------------------------------------------------------------------------
+# Tool-specific Settings
+# -----------------------------------------------------------------------------
+# export DOCKER_DEFAULT_PLATFORM="linux/amd64"
+# export CMAKE_ARGS="-DLLAMA_METAL=on"
+# export SERENA_PATH="${HOME}/serena"
+
+# -----------------------------------------------------------------------------
+# Custom Aliases
+# -----------------------------------------------------------------------------
+# alias claude="${HOME}/.claude/local/claude"
+# alias cdx="/opt/homebrew/bin/codex -m gpt-5 -c model_reasoning_effort=high --search"
